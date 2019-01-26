@@ -17,7 +17,7 @@ const NavBar = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 0 auto;
-  max-width: 880px;
+  max-width: 1280px;
   width: 100%;
   margin-bottom: 20px;
 `;
@@ -45,6 +45,9 @@ const Nav = () => {
             <Link to="/jokes">Jokes</Link>
             <Link to="/signup">Register</Link>
             <Link to="/signin">Sign In</Link>
+            <button onClick={() => localStorage.removeItem("jwt")}>
+              Sign Out
+            </button>
           </Links>
         </NavBar>
       </Container>

@@ -11,10 +11,6 @@ import Signup from "./components/Signup";
 import "./App.css";
 
 class App extends Component {
-  signOut = () => {
-    localStorage.removeItem("jwt");
-  };
-
   render() {
     return (
       <div className="App">
