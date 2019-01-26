@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 
-import { NavLink, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
-import Users from "./components/Users";
+import Nav from "./components/Nav";
+import Jokes from "./components/Jokes";
 import Home from "./components/Home";
 import Signin from "./components/Signin";
 import Signup from "./components/Signup";
 
 import "./App.css";
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-`;
 
 class App extends Component {
   signOut = () => {
@@ -20,7 +16,15 @@ class App extends Component {
   };
 
   render() {
-    return <Container />;
+    return (
+      <div className="App">
+        <Nav />
+        <Route exact path="/" component={Home} />
+        <Route path="/jokes" component={Jokes} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/signup" component={Signin} />
+      </div>
+    );
   }
 }
 
