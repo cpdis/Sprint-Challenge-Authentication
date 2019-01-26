@@ -47,8 +47,33 @@ function register(req, res) {
     });
 }
 
+/**
+ * LOGIN ENDPOINT
+ *
+ * Use the credentials sent inside the body to authenticate the user.
+ *
+ * @param {Object} req - Information returned from HTTP request
+ * @param {Object} res - HTTP response
+ */
+
 function login(req, res) {
-  // implement user login
+  const credentials = req.body;
+
+  db("users")
+    .where({ username: credentials.username })
+    .first()
+    .then(user => {
+      if (user && bcrypt.compareSync(credentials.password, user.password)) {
+        const token = generateToken(user);
+
+        res.status(200).json({ message: "Logged in, Dad!", token });
+      } else {
+        res.status(401).json({ message: "Not now, Dad!" });
+      }
+    })
+    .catch(err => {
+      res.status(500).json({ err });
+    });
 }
 
 function getJokes(req, res) {
