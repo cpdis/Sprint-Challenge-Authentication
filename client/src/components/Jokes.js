@@ -18,7 +18,8 @@ export default class Jokes extends Component {
     axios
       .get(endpoint, options)
       .then(res => {
-        this.setState({ users: res.data });
+        this.setState({ jokes: res.data });
+        console.log(res.data);
       })
       .catch(err => {
         console.log("Error: ", err);
@@ -30,7 +31,7 @@ export default class Jokes extends Component {
         <h2>Dad Jokes!</h2>
         <ul>
           {this.state.jokes.map(jokey => (
-            <li key={jokey.id}>{jokey.username}</li>
+            <li key={jokey.id}>{jokey.joke}</li>
           ))}
         </ul>
       </div>
