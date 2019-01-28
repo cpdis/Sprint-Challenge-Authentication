@@ -5,7 +5,7 @@ const db = require("../database/dbConfig");
 
 const { authenticate, generateToken } = require("../auth/authenticate");
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 module.exports = server => {
   server.post("/api/register", register);
