@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 module.exports = server => {
   server.post("/api/register", register);
   server.post("/api/login", login);
-  server.get("/api/jokes", authenticate, getJokes);
+  server.get("/api/jokes", getJokes);
   server.get("/", hello);
 };
 
@@ -80,12 +80,12 @@ function login(req, res) {
 }
 
 function getJokes(req, res) {
-  const requestOptions = {
-    headers: { accept: "application/json" }
-  };
+  // const requestOptions = {
+  //   headers: { accept: "application/json" }
+  // };
 
   axios
-    .get("https://icanhazdadjoke.com/search", requestOptions)
+    .get("https://icanhazdadjoke.com/search")
     .then(response => {
       res.status(200).json(response.data.results);
     })
