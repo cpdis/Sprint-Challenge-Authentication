@@ -5,10 +5,13 @@ const db = require("../database/dbConfig");
 
 const { authenticate, generateToken } = require("../auth/authenticate");
 
+const port = process.env.PORT || 3000;
+
 module.exports = server => {
   server.post("/api/register", register);
   server.post("/api/login", login);
   server.get("/api/jokes", authenticate, getJokes);
+  server.get("/", hello);
 };
 
 /**
@@ -89,4 +92,8 @@ function getJokes(req, res) {
     .catch(err => {
       res.status(500).json({ message: "Error Fetching Jokes", error: err });
     });
+}
+
+function hello(req, res) {
+  res.send(`API running on port: ${PORT}`);
 }
