@@ -9,6 +9,7 @@ export default class Jokes extends Component {
   componentDidMount() {
     const token = localStorage.getItem("jwt");
     const endpoint = "http://localhost:3000/api/jokes";
+    // const endpoint = "https://lambda-authentication.herokuapp.com/api/jokes";
     const options = {
       headers: {
         Authorization: token

@@ -24,6 +24,7 @@ export default class Signin extends Component {
     event.preventDefault();
 
     const endpoint = "http://localhost:3000/api/login";
+    // const endpoint = "https://lambda-authentication.herokuapp.com/api/login";
 
     axios
       .post(endpoint, this.state)
