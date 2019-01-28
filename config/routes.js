@@ -80,12 +80,12 @@ function login(req, res) {
 }
 
 function getJokes(req, res) {
-  // const requestOptions = {
-  //   headers: { accept: "application/json" }
-  // };
+  const requestOptions = {
+    headers: { accept: "application/json" }
+  };
 
   axios
-    .get("https://icanhazdadjoke.com/search")
+    .get("https://icanhazdadjoke.com/search", requestOptions)
     .then(response => {
       res.status(200).json(response.data.results);
     })
